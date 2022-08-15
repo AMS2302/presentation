@@ -56,19 +56,19 @@
                     <div>
                         <p>HTML</p>
                         <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
-<div class="container">
-    <div class="item"> </div>
-    <div class="item"> </div>
-    <div class="item"> </div>
-</div>
+                            <div class="container">
+                                <div class="item"> </div>
+                                <div class="item"> </div>
+                                <div class="item"> </div>
+                            </div>
 					</code></pre>
                     </div>
                     <div>
-                        <P>CSS</P>
+                        <p>CSS</p>
                         <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
-.container {
-    display: grid // inline-grid;
-}
+                            .container {
+                                display: grid // inline-grid;
+                            }
 					</code></pre>
                     </div>
                 </section>
@@ -176,24 +176,432 @@
                         </div>
                     </div>
                 </section>
-
-
-
-
-
-
-
             </section>
 
+            <section>
+                <section>
+                    <h2>Properties of the Grid Container</h2>
+                </section>
+                <section>
+                    <h3>display</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            display: grid // inline-grid;
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>grid <span class="fragment fade-left" style="color: gray;"> - generates a block-level
+                                grid</span></li>
+                        <li>inline-grid <span class="fragment fade-left" style="color: gray;"> - generates an
+                                inline-level grid</span></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>grid-template-columns, <br>grid-template-rows</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            grid-template-columns: /* [line-name] track-size [line-name] track-size ... */;
+                            grid-template-rows: /* [line-name] track-size [line-name] track-size ... */;
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>line-name <span class="fragment fade-left" style="color: gray;"> - an arbitrary name of your
+                                choosing</span></li>
+                        <li>track-size <span class="fragment fade-left" style="color: gray;"> - can be a length, a
+                                percentage, or a fraction of the free space in the grid</span></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>grid-template-areas</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            display: grid;
+                            grid-template-columns: 50px 50px 50px 50px;
+                            grid-template-rows: auto;
+                            grid-template-areas:
+                                "header header header header"
+                                "main main . sidebar"
+                                "footer footer footer footer";
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>grid-area-name <span class="fragment fade-left" style="color: gray;"> - the name of a grid
+                                area specified with grid-area</span></li>
+                        <li>. <span class="fragment fade-left" style="color: gray;"> - a period signifies an empty grid
+                                cell</span></li>
+                        <li>none <span class="fragment fade-left" style="color: gray;"> - no grid areas are
+                                defined</span></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>grid-template</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            grid-template: /* none | grid-template-rows / grid-template-columns */;
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>none <span class="fragment fade-left" style="color: gray;"> - sets all three properties to
+                                their initial values</span></li>
+                        <li>grid-template-rows / grid-template-columns <span class="fragment fade-left"
+                                style="color: gray;"> - sets grid-template-columns and grid-template-rows to the
+                                specified values, respectively, and sets grid-template-areas to none</span></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>column-gap, row-gap, gap</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            column-gap:  /* line-size */;
+                            row-gap: /* line-size */;
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>line-size <span class="fragment fade-left" style="color: gray;"> - a length value</span>
+                        </li>
+                    </ul>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            gap: /* grid-row-gap grid-column-gap */;
+                        }
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>justify-items</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            justify-items: /* start | end | center | stretch */;
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>start <span class="fragment fade-left" style="color: gray;"> - aligns items to be flush with
+                                the start edge of their cell</span>
+                        </li>
+                        <li>end <span class="fragment fade-left" style="color: gray;"> - aligns items to be flush with
+                                the end edge of their cell</span>
+                        </li>
+                        <li>center <span class="fragment fade-left" style="color: gray;"> - aligns items in the center
+                                of their cell</span>
+                        </li>
+                        <li>stretch <span class="fragment fade-left" style="color: gray;"> - fills the whole width of
+                                the cell (this is the default)</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>align-items</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            align-items: /* start | end | center | stretch */;
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>start <span class="fragment fade-left" style="color: gray;"> - aligns items to be flush with
+                                the start edge of their cell</span>
+                        </li>
+                        <li>end <span class="fragment fade-left" style="color: gray;"> - aligns items to be flush with
+                                the end edge of their cell</span>
+                        </li>
+                        <li>center <span class="fragment fade-left" style="color: gray;"> - aligns items in the center
+                                of their cell</span>
+                        </li>
+                        <li>stretch <span class="fragment fade-left" style="color: gray;"> - fills the whole width of
+                                the cell (this is the default)</span>
+                        </li>
+                        <li>baseline <span class="fragment fade-left" style="color: gray;"> - align items along text
+                                baseline. There are modifiers to baseline — first baseline and last baseline which will
+                                use the baseline from the first or last line in the case of multi-line text</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>place-items</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            place-items: /* align-items  justify-items */;
+                        }
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>justify-content</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            justify-content: /* start | end | center | stretch | space-around | space-between | space-evenly */;
+                        }
+                    </code></pre>
+                    <ul style="font-size: 0.8em;">
+                        <li>start <span class="fragment fade-left" style="color: gray;"> - aligns the grid to be flush
+                                with the start edge of the grid container</span>
+                        </li>
+                        <li>end <span class="fragment fade-left" style="color: gray;"> - aligns the grid to be flush
+                                with the end edge of the grid container</span>
+                        </li>
+                        <li>center <span class="fragment fade-left" style="color: gray;"> - aligns the grid in the
+                                center of the grid container</span>
+                        </li>
+                        <li>stretch <span class="fragment fade-left" style="color: gray;"> - resizes the grid items to
+                                allow the grid to fill the full width of the grid container</span>
+                        </li>
+                        <li>space-around <span class="fragment fade-left" style="color: gray;"> - places an even amount
+                                of space between each grid item, with half-sized spaces on the far ends</span>
+                        </li>
+                        <li>space-between <span class="fragment fade-left" style="color: gray;"> - places an even amount
+                                of space between each grid item, with no space at the far ends</span>
+                        </li>
+                        <li>space-evenly <span class="fragment fade-left" style="color: gray;"> - places an even amount
+                                of space between each grid item, including the far ends</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>align-content</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            align-content: /* start | end | center | stretch | space-around | space-between | space-evenly */;
+                        }
+                    </code></pre>
+                    <ul style="font-size: 0.8em;">
+                        <li>start <span class="fragment fade-left" style="color: gray;"> - aligns the grid to be flush
+                                with the start edge of the grid container</span>
+                        </li>
+                        <li>end <span class="fragment fade-left" style="color: gray;"> - aligns the grid to be flush
+                                with the end edge of the grid container</span>
+                        </li>
+                        <li>center <span class="fragment fade-left" style="color: gray;"> - aligns the grid in the
+                                center of the grid container</span>
+                        </li>
+                        <li>stretch <span class="fragment fade-left" style="color: gray;"> - resizes the grid items to
+                                allow the grid to fill the full height of the grid container</span>
+                        </li>
+                        <li>space-around <span class="fragment fade-left" style="color: gray;"> - places an even amount
+                                of space between each grid item, with half-sized spaces on the far ends</span>
+                        </li>
+                        <li>space-between <span class="fragment fade-left" style="color: gray;"> - places an even amount
+                                of space between each grid item, with no space at the far ends</span>
+                        </li>
+                        <li>space-evenly <span class="fragment fade-left" style="color: gray;"> - places an even amount
+                                of space between each grid item, including the far ends</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>place-content</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            place-content: /* align-content  justify-content */;
+                        }
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>grid-auto-columns, <br>grid-auto-rows</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            grid-auto-columns: /* track-size ... */;
+                            grid-auto-rows: /* track-size ... */;
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>track-size <span class="fragment fade-left" style="color: gray;"> - can be a length, a
+                                percentage, or a fraction of the free space in the grid</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>grid-auto-flow</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            grid-auto-flow: /* row | column | row dense | column dense */;
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>row <span class="fragment fade-left" style="color: gray;"> - tells the auto-placement
+                                algorithm to fill in each row in turn, adding new rows as necessary (default)</span>
+                        </li>
+                        <li>column <span class="fragment fade-left" style="color: gray;"> - tells the auto-placement
+                                algorithm to fill in each column in turn, adding new columns as necessary</span>
+                        </li>
+                        <li>dense <span class="fragment fade-left" style="color: gray;"> - tells the auto-placement
+                                algorithm to attempt to fill in holes earlier in the grid if smaller items come up
+                                later</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>grid</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .container {
+                            grid: /* none | grid-template-rows / grid-template-columns | grid-auto-flow [grid-auto-rows [/ grid-auto-columns]] */;
+                        }
+                    </code></pre>
+                    <ul>
+                        <li>none <span class="fragment fade-left" style="color: gray;"> - sets all sub-properties to
+                                their initial values</span>
+                        </li>
+                        <li>grid-template <span class="fragment fade-left" style="color: gray;"> - works the same as the
+                                grid-template shorthand</span>
+                        </li>
+                        <li>grid-template-rows / grid-auto-columns <span class="fragment fade-left"
+                                style="color: gray;"> - sets grid-template-rows to the specified value</span>
+                        </li>
+                        <li>grid-auto-flow [grid-auto-rows [/ grid-auto-columns]] <span class="fragment fade-left"
+                                style="color: gray;"> - sets grid-template-columns to the specified value</span>
+                        </li>
+                    </ul>
+                </section>
+            </section>
 
+            <section>
+                <section>
+                    <h2>Properties of the Grid Items</h2>
+                </section>
+                <section>
+                    <h3>grid-column-start, <br>grid-column-end, <br>grid-row-start, <br>grid-row-end</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .item {
+                            grid-column-start: /* number | name | span number | span name | auto */;
+                            grid-column-end: /* number | name | span number | span name | auto */;
+                            grid-row-start: /* number | name | span number | span name | auto */;
+                            grid-row-end: /* number | name | span number | span name | auto */;
+                          }
+                    </code></pre>
+                    <ul style="font-size: 0.7em;">
+                        <li>line <span class="fragment fade-left" style="color: gray;"> - can be a number to refer to a
+                                numbered grid line, or a name to refer to a named grid line
+                                grid</span></li>
+                        <li>span number <span class="fragment fade-left" style="color: gray;"> - the item will span
+                                across the provided number of grid tracks</span></li>
+                        <li>span name <span class="fragment fade-left" style="color: gray;"> - the item will span across
+                                until it hits the next line with the provided name</span></li>
+                        <li>auto <span class="fragment fade-left" style="color: gray;"> - indicates auto-placement, an
+                                automatic span, or a default span of one</span></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>grid-column, <br>grid-row</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .item {
+                            grid-column: /* start-line / end-line | start-line / span value */;
+                            grid-row: /* start-line / end-line | start-line / span value */;
+                          }
+                    </code></pre>
+                    <p>Shorthand for grid-column-start + grid-column-end, and grid-row-start + grid-row-end,
+                        respectively</p>
+                    <ul>
+                        <li>start-line / end-line <span class="fragment fade-left" style="color: gray;"> - each one
+                                accepts all the same values as the longhand version, including span</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>grid-area</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .item {
+                            grid-area: /* name| row-start / column-start / row-end / column-end */;
+                          }
+                    </code></pre>
+                    <p>Shorthand for grid-column-start + grid-column-end, and grid-row-start + grid-row-end,
+                        respectively</p>
+                    <ul>
+                        <li>name <span class="fragment fade-left" style="color: gray;"> - a name of your choosing</span>
+                        </li>
+                        <li>row-start / column-start / row-end / column-end <span class="fragment fade-left"
+                                style="color: gray;"> - can be numbers or named lines</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>justify-self, <br>align-self</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .item {
+                            justify-self: /* start | end | center | stretch */;
+                            align-self: /* start | end | center | stretch */;
+                          }
+                    </code></pre>
+                    <ul>
+                        <li>start <span class="fragment fade-left" style="color: gray;"> - aligns the grid item to be
+                                flush with the start edge of the cell</span>
+                        </li>
+                        <li>end <span class="fragment fade-left" style="color: gray;"> - aligns the grid item to be
+                                flush with the end edge of the cell</span>
+                        </li>
+                        <li>center <span class="fragment fade-left" style="color: gray;"> - aligns the grid item in the
+                                center of the cell</span>
+                        </li>
+                        <li>stretch <span class="fragment fade-left" style="color: gray;"> - fills the whole width of
+                                the cell (this is the default)</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>place-self</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        .item {
+                            place-self: /* align-self  justify-self */;
+                          }
+                    </code></pre>
+                    <p>Sets both the align-self and justify-self properties in a single declaration</p>
+                    <ul>
+                        <li>auto <span class="fragment fade-left" style="color: gray;"> - the “default” alignment for
+                                the layout mode</span>
+                        </li>
+                        <li>align-self / justify-self <span class="fragment fade-left" style="color: gray;"> - the first
+                                value sets align-self, the second value justify-self. If the second value is omitted,
+                                the first value is assigned to both properties</span>
+                        </li>
+                    </ul>
+                </section>
+            </section>
 
-
-
-
-
-
-
-
+            <section>
+                <section>
+                    <h2>Special Units & Functions</h2>
+                </section>
+                <section>
+                    <h3>Sizing Keywords</h3>
+                    <ul style="font-size: 0.7em;">
+                        <li>min-content: <span class="fragment fade-left" style="color: gray;"> the minimum size of the
+                                content. Imagine a line of text like “E pluribus unum”, the min-content is likely the
+                                width of the word “pluribus”</span>
+                        </li>
+                        <li>max-content: <span class="fragment fade-left" style="color: gray;"> the maximum size of the
+                                content. Imagine the sentence above, the max-content is the length of the whole
+                                sentence</span>
+                        </li>
+                        <li>auto: <span class="fragment fade-left" style="color: gray;"> this keyword is a lot like fr
+                                units, except that they “lose” the fight in sizing against fr units when allocating the
+                                remaining space</span>
+                        </li>
+                        <li>fit-content: <span class="fragment fade-left" style="color: gray;"> use the space available,
+                                but never less than min-content and never more than max-content</span>
+                        </li>
+                        <li>fractional units: <span class="fragment fade-left" style="color: gray;"> “portion of the
+                                remaining space”</span>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Sizing Functions</h3>
+                    <ul style="font-size: 0.7em;">
+                        <li>minmax() function <span class="fragment fade-left" style="color: gray;"> sets a minimum and
+                                maximum value for what the length is able to be. This is useful for in combination with
+                                relative units</span>
+                            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                                    .item {
+                                        grid-template-columns: minmax(100px, 1fr) 3fr;
+                                      }
+                                </code></pre>
+                        </li>
+                        <li>repeat() function <span class="fragment fade-left" style="color: gray;"> If your definition
+                                contains repeating parts, you can use the repeat() notation to streamline things</span>
+                            <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                                    .item {
+                                        grid-template-columns: repeat(8, 1fr);
+                                      }
+                                </code></pre>
+                        </li>
+                    </ul>
+                </section>
+            </section>
         </div>
     </div>
 

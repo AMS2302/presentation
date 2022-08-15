@@ -1,52 +1,217 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <title>CSS Grid</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-                <section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-			</div>
-		</div>
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css">
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2 class="r-fit-text">CSS Grid</h2>
+            </section>
+
+            <section>
+                <h2>What is CSS Grid Layout?</h2>
+                <p class="fragment fade-in">
+                    CSS Grid Layout is a two-dimensional grid-based layout system.
+                </p>
+            </section>
+
+            <section>
+                <h2>Features</h2>
+                <p>
+                <p class="fragment fade-left">Fixed and flexible track sizes</p>
+                <p class="fragment fade-left">Item placement</p>
+                <p class="fragment fade-left">Creation of additional tracks to hold content</p>
+                <p class="fragment fade-left">Alignment control</p>
+                <p class="fragment fade-left">Control of overlapping content</p>
+                </p>
+            </section>
+
+            <section>
+                <h2>Browser Support</h2>
+                <a href="https://caniuse.com/css-grid" target="_blank">
+                    <img src="./assets/img/browser-support.png" alt="browser support">
+                </a>
+            </section>
+
+            <section>
+                <section>
+                    <h2>Terminology</h2>
+                </section>
+                <section>
+                    <h3>Grid Container,<br>Grid Items</h3>
+                    <div>
+                        <p>HTML</p>
+                        <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+<div class="container">
+    <div class="item"> </div>
+    <div class="item"> </div>
+    <div class="item"> </div>
+</div>
+					</code></pre>
+                    </div>
+                    <div>
+                        <P>CSS</P>
+                        <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+.container {
+    display: grid // inline-grid;
+}
+					</code></pre>
+                    </div>
+                </section>
+                <section>
+                    <h3>Grid Line</h3>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: nowrap; gap: 50px;">
+                        <div class="fragment">
+                            <p>column grid lines</p>
+                            <div
+                                style="display: grid; grid-template-columns: repeat(3, minmax(100px, 1fr)); grid-template-rows: repeat(3, minmax(100px, 1fr)); width: 50%;">
+                                <div style="border: solid 2px gray; border-right-color: blue; border-left-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-right-color: blue; border-left-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-right-color: blue; border-left-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-right-color: blue; border-left-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-right-color: blue; border-left-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-right-color: blue; border-left-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-right-color: blue; border-left-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-right-color: blue; border-left-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-right-color: blue; border-left-color: blue;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fragment">
+                            <p>row grid lines</p>
+                            <div
+                                style="display: grid; grid-template-columns: repeat(3, minmax(100px, 1fr)); grid-template-rows: repeat(3, minmax(100px, 1fr)); width: 50%;">
+                                <div style="border: solid 2px gray; border-top-color: blue; border-bottom-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-top-color: blue; border-bottom-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-top-color: blue; border-bottom-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-top-color: blue; border-bottom-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-top-color: blue; border-bottom-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-top-color: blue; border-bottom-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-top-color: blue; border-bottom-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-top-color: blue; border-bottom-color: blue;">
+                                </div>
+                                <div style="border: solid 2px gray; border-top-color: blue; border-bottom-color: blue;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>Grid Track</h3>
+                    <div style="display: flex; justify-content: center; flex-wrap: nowrap;">
+                        <div
+                            style="display: grid; grid-template-columns: repeat(3, minmax(100px, 1fr)); grid-template-rows: repeat(3, minmax(100px, 1fr)); width: 50%;">
+                            <div style="border: solid 2px gray; background-color: blue;"></div>
+                            <div style="border: solid 2px gray; background-color: blue;"></div>
+                            <div style="border: solid 2px gray; background-color: blue;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>Grid Cell</h3>
+                    <div style="display: flex; justify-content: center; flex-wrap: nowrap;">
+                        <div
+                            style="display: grid; grid-template-columns: repeat(3, minmax(100px, 1fr)); grid-template-rows: repeat(3, minmax(100px, 1fr)); width: 50%;">
+                            <div style="border: solid 2px gray; background-color: blue;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>Grid Area</h3>
+                    <div style="display: flex; justify-content: center; flex-wrap: nowrap;">
+                        <div
+                            style="display: grid; grid-template-columns: repeat(3, minmax(100px, 1fr)); grid-template-rows: repeat(3, minmax(100px, 1fr)); width: 50%;">
+                            <div style="border: solid 2px gray; background-color: blue;"></div>
+                            <div style="border: solid 2px gray; background-color: blue;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray; background-color: blue;"></div>
+                            <div style="border: solid 2px gray; background-color: blue;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                            <div style="border: solid 2px gray;"></div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
 </html>
